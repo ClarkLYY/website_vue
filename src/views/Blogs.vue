@@ -38,7 +38,7 @@
     methods: {
       page(pageNo, pageSize) {
         const _this = this
-        this.$axios.get('http://localhost:7777/blogs?pageNo=' + pageNo + '&pageSize=' +pageSize).then((res) => {
+        this.$axios.get('/blogs?pageNo=' + pageNo + '&pageSize=' +pageSize).then((res) => {
           console.log(res.data.data.records)
           _this.blogs = res.data.data
         //   _this.pageNo = res.data.data.current

@@ -29,7 +29,7 @@
         hasLogin: false,
         user: {
           userEmail: '请先登录',
-          avatar: "http://localhost:7777/static/touxiang.png"
+          avatar: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
         },
         blogs: {},
         currentPage: 1,
@@ -39,7 +39,7 @@
     methods: {
       logout() {
         const _this = this
-        this.$axios.get('http://localhost:7777/user/logout', {
+        this.$axios.get('/user/logout', {
           headers: {
             "Authorization": localStorage.getItem("token")
           }
@@ -52,7 +52,7 @@
     created() {
       if(this.$store.getters.getUser.userEmail) {
         this.user.userEmail = this.$store.getters.getUser.userEmail
-        this.user.avatar = 'http://localhost:7777/static/touxiang2.png'
+        this.user.avatar = 'http://localhost:7777/static/cheems.png'
         this.hasLogin = true
       }
     }

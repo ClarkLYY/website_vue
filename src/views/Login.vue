@@ -56,7 +56,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             // 提交逻辑
-            this.$axios.post('http://localhost:7777/user/login', this.ruleForm).then((res)=>{
+            this.$axios.post('/user/login', this.ruleForm).then((res)=>{
               const token = res.headers['authorization']
               _this.$store.commit('SET_TOKEN', token)
               _this.$store.commit('SET_USERINFO', res.data.data)
