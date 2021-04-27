@@ -8,15 +8,15 @@
       </el-header>
       <el-main>
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="用户邮箱" prop="userEmail">
-            <el-input type="text" maxlength="50" v-model="ruleForm.userEmail"></el-input>
+          <el-form-item label="用户邮箱" prop="userEmail" label-width="100px">
+            <el-input type="text" maxlength="50" v-model="ruleForm.userEmail "></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
+            <el-input type="password" v-model="ruleForm.userPassword" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+            <el-button type="primary" @click="resetForm('ruleForm')">重置</el-button>
           </el-form-item>
         </el-form>
       </el-main>
@@ -36,7 +36,7 @@
       };
       return {
         ruleForm: {
-          userPassword: '123456',
+          userPassword: '',
           userEmail: 'leiyuyang@bytedance.com'
         },
         rules: {
@@ -71,13 +71,7 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
-    },
-    mounted() {
-      this.$notify({
-        title: '看这里：',
-        message: '关注公众号：MarkerHub，回复【vueblog】，领取项目资料与源码',
-        duration: 1500
-      });
     }
+    
   }
 </script>
