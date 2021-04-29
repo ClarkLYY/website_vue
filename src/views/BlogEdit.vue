@@ -10,7 +10,7 @@
           <el-input type="textarea" v-model="editForm.description"></el-input>
         </el-form-item>
         <el-form-item label="内容" prop="content">
-          <mavon-editor v-model="editForm.content"/>
+          <mavon-editor ref=md @imgAdd="$imgAdd" @imgDel="$imgDel" v-model="editForm.content"/>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm()">立即创建</el-button>
@@ -84,6 +84,28 @@
       goback(){
         const _this = this
         _this.$router.push("/blog/"+this.editForm.id)
+      },
+
+      $imgAdd(pos, $file){
+            // 第一步.将图片上传到服务器.
+           const _this = this
+           var formdata = new FormData();
+           formdata.append('fileName', $file);
+           this.$axios.post('/img/upload' ,formdata).then((res) => {
+               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+               /**
+               * $vm 指为mavonEditor实例，可以通过如下两种方式获取
+               * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
+               * 2. 通过$refs获取: html声明ref : `<mavon-editor ref=md ></mavon-editor>，`$vm`为 `this.$refs.md`
+               */
+              console.log(res)
+              this.$refs.md.$img2Url(pos, res.data.data);
+              console.log(res)
+           }).catch(() => {})
+      },
+
+      $imgDel(pos) {
+        delete this.img_file[pos];
       }
     }
   }

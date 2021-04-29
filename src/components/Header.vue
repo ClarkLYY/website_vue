@@ -52,7 +52,7 @@
     created() {
       if(this.$store.getters.getUser.userEmail) {
         this.user.userEmail = this.$store.getters.getUser.userEmail
-        this.user.avatar = 'http://localhost:7777/static/cheems.png'
+        this.user.avatar = 'http://localhost:7777/cheems.png'
         this.hasLogin = true
       }
     }
