@@ -2,6 +2,15 @@
   <div class="m-container">
     <Header></Header>
     <div class="block">
+      <el-form :inline="true" :model="searchBlog" class="demo-form-inline">
+        <el-form-item label="内容">
+          <el-input v-model="searchBlog.title" placeholder="请输入查询内容"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit(searchBlog.title)">查询</el-button>
+        </el-form-item>
+      </el-form>
+
       <el-timeline>
         <el-timeline-item v-bind:timestamp="blog.created" placement="top" v-for="blog in blogs " :key="blog">
           <el-card>
@@ -32,7 +41,12 @@
         blogs: {},
         pageNo: 1,
         total: 0,
-        pageSize: 5
+        pageSize: 5,
+
+        searchBlog: {
+          title: "",
+        }
+
       }
     },
     methods: {
@@ -41,6 +55,17 @@
         this.$axios.get('/blogs?pageNo=' + pageNo + '&pageSize=' +pageSize).then((res) => {
           console.log(res.data.data.records)
           _this.blogs = res.data.data
+        //   _this.pageNo = res.data.data.current
+        //   _this.total = res.data.data.total
+        //   _this.pageSize = res.data.data.size
+        })
+      },
+
+      onSubmit(title){
+        const _this = this
+        this.$axios.get('/es/search?title='+ title + '&pageNum=' + (this.pageNo-1) + '&pageSize=' +this.pageSize).then((res) => {
+          console.log(res.data.data.content)
+          _this.blogs = res.data.data.content
         //   _this.pageNo = res.data.data.current
         //   _this.total = res.data.data.total
         //   _this.pageSize = res.data.data.size
