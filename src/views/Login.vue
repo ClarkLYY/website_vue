@@ -61,7 +61,7 @@
               const token = res.headers['authorization']
               _this.$store.commit('SET_TOKEN', token)
               _this.$store.commit('SET_USERINFO', res.data.data)
-              _this.$router.push("/blogs")
+              _this.$router.push("/blog")
             })
           } else {
             console.log('error submit!!');

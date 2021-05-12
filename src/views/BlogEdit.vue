@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-  import Header from "@/components/Header";
+  import Header from "@/components/PersonalInfo";
   export default {
     name: "BlogEdit",
     components: {Header},

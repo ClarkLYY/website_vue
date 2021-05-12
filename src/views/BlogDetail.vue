@@ -3,7 +3,9 @@
     <Header></Header>
     <div class="mblog">
       <h2>{{ blog.title }}</h2>
-      <el-link icon="el-icon-edit" v-if="ownBlog"><router-link :to="{name: 'BlogEdit', params: {blogId: blog.id}}">编辑</router-link></el-link>
+      <el-link icon="el-icon-edit" v-if="ownBlog">
+        <router-link :to="{name: 'BlogEdit', params: {blogId: blog.id}}">编辑</router-link>
+      </el-link>
       <el-divider></el-divider>
       <div class="content markdown-body" v-html="blog.content"></div>
     </div>
@@ -11,7 +13,7 @@
 </template>
 <script>
   import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-body
-  import Header from "@/components/Header";
+  import Header from "@/components/PersonalInfo";
   export default {
     name: "BlogDetail",
     components: {

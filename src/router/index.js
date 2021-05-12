@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    redirect: { name: 'Blogs' }
+    redirect: { name: 'Blog' }
   },
   {
     path: '/login',
@@ -16,10 +16,10 @@ const routes = [
     component: Login
   },
   {
-    path: '/blogs',
-    name: 'Blogs',
+    path: '/blog',
+    name: 'Blog',
     // 懒加载
-    component: () => import('../views/Blogs.vue')
+    component: () => import('../views/Blog.vue')
   },
   {
     path: '/blog/add', // 注意放在 path: '/blog/:blogId'之前
