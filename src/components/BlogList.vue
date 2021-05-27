@@ -14,7 +14,10 @@
         <el-card v-for="blog in blogs" :key="blog" class="blogListCard">
           <div @click="toBlogDetail(blog.id)">
             <div class="blogTitle">{{ blog.title }}</div>
+
+            <div class="updateTime">{{blog.created}}</div>
             <div class="briefContent">{{ blog.description }}</div>
+
           </div>
         </el-card>
       </div>

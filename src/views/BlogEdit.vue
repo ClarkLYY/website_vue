@@ -1,6 +1,6 @@
 <template>
   <div class="m-container">
-    <Header></Header>
+
     <div class="m-content">
       <el-form ref="editForm" status-icon :model="editForm" :rules="rules" label-width="80px">
         <el-form-item label="标题" prop="title">
@@ -70,7 +70,7 @@
               _this.$alert('操作成功', '提示', {
                 confirmButtonText: '确定',
                 callback: action => {
-                  _this.$router.push("/blogs")
+                  _this.$router.push("/blog")
                 }
               });
             });

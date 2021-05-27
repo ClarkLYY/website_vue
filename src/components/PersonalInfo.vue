@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card class="personalInfoCard">
-      <el-avatar :size="100" :src="user.avatar"></el-avatar>
+      <el-avatar shape="circle" :size="100" :src="user.avatar"></el-avatar>
       <div class="name"><p>{{user.userNickName}}</p></div>
       <div class="label">
         <el-link class="home" href="/blog">主页</el-link>
