@@ -8,13 +8,10 @@
         <div class="contentArea">
           <blogList></blogList>
         </div>
-
         <div class="right">
           <personalInfo class="personalCard"></personalInfo>
         </div>
       </div>
-
-
     </section>
     <footer></footer>
   </div>
@@ -24,8 +21,6 @@
 import menuList from "../components/Menu";
 import blogList from "../components/BlogList";
 import personalInfo from "../components/PersonalInfo";
-// import catalog from "./blogCatalog";
-// import blogContent from "./blogContent";
 require("../viewStyle/blog.scss");
 export default {
   components: {
@@ -33,6 +28,5 @@ export default {
     blogList,
     personalInfo,
   }
-
 };
 </script>

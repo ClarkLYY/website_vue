@@ -17,6 +17,13 @@ export default {
     };
   },
 
+  methods: {
+    handleSelect(activeIndex) {
+      if(activeIndex==1){
+        this.$router.push("/blog")
+      }
+    }
+  }
 };
 </script>
 

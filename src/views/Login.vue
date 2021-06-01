@@ -17,7 +17,7 @@
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
             <el-button type="primary" @click="resetForm('ruleForm')">重置</el-button>
-            <el-button type="primary" @click="resetForm('ruleForm')">注册</el-button>
+            <el-button type="primary" @click="toRegister()">注册</el-button>
           </el-form-item>
         </el-form>
       </el-main>
@@ -71,7 +71,10 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
+      toRegister(){
+        this.$router.push("/register");
+      }
     }
     
   }

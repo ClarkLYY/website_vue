@@ -14,10 +14,8 @@
         <el-card v-for="blog in blogs" :key="blog" class="blogListCard">
           <div @click="toBlogDetail(blog.id)">
             <div class="blogTitle">{{ blog.title }}</div>
-
             <div class="updateTime">{{blog.created}}</div>
             <div class="briefContent">{{ blog.description }}</div>
-
           </div>
         </el-card>
       </div>
@@ -69,10 +67,9 @@ export default {
     esSearch(pageNo, title) {
       const _this = this
       this.$axios.get('/es/search?title=' + title + '&pageNum=' + pageNo + '&pageSize=' + 999).then((res) => {
-        console.log(res.data.data.content)
-        _this.blogs = res.data.data.content
-        //   _this.pageNo = res.data.data.current
-        _this.total = res.data.data.totalElements
+        console.log(res.data.data)
+        _this.blogs = res.data.data.list
+        _this.total = res.data.data.total
         _this.pageSize = 999
       })
     }

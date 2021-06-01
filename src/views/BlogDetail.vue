@@ -1,10 +1,10 @@
 <template>
   <div class="m-container">
-
-    <div class="mblog">
+    <menu-list></menu-list>
+    <div class="blogDetail">
       <h2>{{ blog.title }}</h2>
 
-      <el-row>
+      <el-row v-if="ownBlog">
         <el-button type="primary" icon="el-icon-edit" circle @click="toBlogEdit(blog.id)"></el-button>
         <el-button  type="danger" icon="el-icon-delete" circle @click="deleteBlog(blog.id)"></el-button>
       </el-row>
@@ -20,11 +20,12 @@
 
 <script>
   import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-body
-  import Header from "@/components/PersonalInfo";
+  import menuList from "../components/Menu";
+  require("../viewStyle/blogDetail.scss")
   export default {
     name: "BlogDetail",
     components: {
-      Header
+      menuList
     },
     data() {
       return {
@@ -58,31 +59,15 @@
                 try {
                   // 得到经过highlight.js之后的html代码
                   const preCode = hljs.highlight(lang, str, true).value
-                  // 以换行进行分割
-                  const lines = preCode.split(/\n/).slice(0, -1)
-                  // 添加自定义行号
-                  let html = lines.map((item, index) => {
-                    return '<li><span class="line-num" data-line="' + (index + 1) + '"></span>' + item + '</li>'
-                  }).join('')
-                  html = '<ol>' + html + '</ol>'
-                  // 添加代码语言
-                  if (lines.length) {
-                    html += '<b class="name">' + lang + '</b>'
-                  }
                   return '<pre style="background: rgba(29,27,27,0.84)" class="hljs"><code>' +
-                      html +
+                      preCode +
                       '</code></pre>'
                 } catch (__) {}
               }
               // 未添加代码语言，此处与上面同理
               const preCode = md.utils.escapeHtml(str)
-              const lines = preCode.split(/\n/).slice(0, -1)
-              let html = lines.map((item, index) => {
-                return '<li><span class="line-num" data-line="' + (index + 1) + '"></span>' + item + '</li>'
-              }).join('')
-              html = '<ol>' + html + '</ol>'
-              return '<pre class="hljs"><code>' +
-                  html +
+              return '<pre style="background: rgba(29,27,27,0.84)" class="hljs"><code>' +
+                  preCode +
                   '</code></pre>'
             }
           })
